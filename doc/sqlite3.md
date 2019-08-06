@@ -71,13 +71,13 @@ select length(txfactfichier), * from facsuivi where length(txfactfichier) >= 80 
 create index facsuivi01 on facsuivi(txfactfichier);
 
 
-SELECT replace(TXFACTUREORIGINALFILENAME, '_GM_MCD.', '.') AS TXNOMFICHIER, 
+SELECT replace(TXFACTUREORIGINALFILENAME, '_GM_MCD.', '.') AS TXNOMFICHIER,
 strftime('%Y-%m-%d', datetime(ohdatcre / 1000, 'unixepoch')) as txcreation,
 strftime('%Y-%m-%d %H:%M:%S', datetime(ohdatcre / 1000, 'unixepoch')) as txcreationfull,
-OHDATCRE AS DTCREATION, 
-'TALEND' AS TXSOURCE, 
+OHDATCRE AS DTCREATION,
+'TALEND' AS TXSOURCE,
 TXSTATUS
-FROM FACSUIVI  
+FROM FACSUIVI
 WHERE datetime(ohdatcre / 1000, 'unixepoch') BETWEEN  date(CURRENT_DATE, '-1 day')  AND CURRENT_DATE AND TXSTATUS <> 'replaymanuel'
 and idsuivi in (5068783, 5008783);
 
@@ -111,7 +111,7 @@ where
 detected_by  in('rutom','butryj','datessid','prettm','cavatera','trossart','spantonm'))
 and status not in ('Closed', 'Refused')
 and detected_by not in ('penvent')
-order by 
+order by
 case when Livraison_cible is null then 'b' when Livraison_cible like '% SR %' then Livraison_cible else 'a' || Livraison_cible end,
 id
 ;
@@ -165,3 +165,5 @@ order by jour, cdmapping
 2014.11.16 	 MED400 	 <null> 	 3509
 2014.11.16 	 PHA400 	 <null> 	 9580
 2014.11.17 	 GEN430 	 2      	 6
+
+select * from fec_ limit 1;
