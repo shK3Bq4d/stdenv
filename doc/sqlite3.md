@@ -178,3 +178,5 @@ order by jour, cdmapping
 2014.11.17 	 GEN430 	 2      	 6
 
 select * from fec_ limit 1;
+
+DROP TABLE [IF EXISTS] [schema_name.] table_name;
